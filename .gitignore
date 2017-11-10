@@ -1,0 +1,8 @@
+*.o
+*.swp
+*.bin
+*.elf
+*.img
+cscope.*
+*.txt
+tags
