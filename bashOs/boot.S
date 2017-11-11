@@ -3,7 +3,7 @@
 movw    $0x7c0,%ax
 movw    %ax,%ds
 movw    %ax,%es
-movw    $0x980,%ax
+movw    $0x9800,%ax
 movw    %ax,%ss
 movw    $0x100,%sp
 movl    $0,%edi
@@ -17,6 +17,7 @@ movb    $0,%dh
 call    dispMessage
 
 movb    $2,%cl
+movw    $0x2040,%ax
 call    readToRam
 
 movw    $0x1b5,%ax
@@ -27,7 +28,7 @@ popl    %eax
 movb    $1,%dh
 call    dispMessage
 
-ljmp    $0x800,$0x0
+ljmp    $0x2040,$0x0
 
 wrong:
 movw    $0x1cc, %ax
@@ -67,7 +68,6 @@ readToRam:
    pushw %es
 
    movw $0,%bx
-   movw $0x800,%ax
    movw %ax,%es
    
    movb $2,%ah

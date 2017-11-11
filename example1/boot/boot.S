@@ -1,37 +1,47 @@
 .code16
 .text
-movw %cs,%ax
-movw %ax,%ds
-movw %ax,%es
-movw $0x980,%ax
-movw %ax,%ss
-movw $0x100,%sp
+movw    $0x7c0,%ax
+movw    %ax,%ds
+movw    %ax,%es
+movw    $0x9800,%ax
+movw    %ax,%ss
+movw    $0x100,%sp
+movl    $0,%edi
 
-movw $bootMessage, %ax
-movw lenOfBootMessage,%cx
-movb $0,%dh
-call dispMessage
+movw    $0x1a0, %ax
+pushl   %eax
+movl    $0x1b3,%eax
+movw    %ds:0(%eax,%edi,1),%cx
+popl    %eax
+movb    $0,%dh
+call    dispMessage
 
-movw $0x800,%ax
-movb $2,%cl
-call readToRam
+movb    $2,%cl
+movw    $0x1040,%ax
+call    readToRam
 
-movw $0x820,%ax
-movb $3,%cl
-call readToRam
+movb    $3,%cl
+movw    $0x2040,%ax
+call    readToRam
 
-movw $bootMessageFinish, %ax
-movw lenOfBootMessageFinish,%cx
-movb $1,%dh
-call dispMessage
+movw    $0x1b5, %ax
+pushl   %eax
+movl    $0x1ca,%eax
+movw    %ds:0(%eax,%edi,1),%cx
+popl    %eax
+movb    $1,%dh
+call    dispMessage
 
-ljmp $0x800,$0x0
+ljmp    $0x2040,$0x0
 
 wrong:
-movw $test, %ax
-movw lenOfTest,%cx
-movb $10,%dh
-call dispMessage
+movw    $0x1cc, %ax
+pushl   %eax
+movl    $0x1d2,%eax
+movw    %ds:0(%eax,%edi,1),%cx
+popl    %eax
+movb    $10,%dh
+call    dispMessage
 
 inf:jmp inf
 
@@ -80,6 +90,8 @@ readToRam:
    popw %ax
 
    ret
+
+.org 416
 
 bootMessage:                .ascii "Now,Loading kernel!"
 lenOfBootMessage:           .short 19

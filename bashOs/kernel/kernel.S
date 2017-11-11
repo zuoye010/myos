@@ -3,7 +3,7 @@
 movw    %cs,%ax
 movw    %ax,%ds
 movw    %ax,%es
-movw    $0x980,%ax
+movw    $0x9800,%ax
 movw    %ax,%ss
 movw    $0x100,%sp
 movl    $0,%edi
@@ -17,12 +17,13 @@ movb    $2,%dh
 call    dispMessage
 
 movb    $3,%cl
+movw    $0x2060,%ax
 call    readToRam
 
 pushw   %es
 pushw   %cs
-pushw   $0x38
-ljmp    $0x820,$0
+pushw   $0x3b
+ljmp    $0x2060,$0
 
 popw    %es
 movw    %cs,%ax
@@ -37,12 +38,13 @@ movb    $4,%dh
 call    dispMessage
 
 movb    $4,%cl
+movw    $0x2060,%ax
 call    readToRam
 
 pushw   %es
 pushw   %cs
-pushw   $0x67
-ljmp    $0x820,$0
+pushw   $0x6d
+ljmp    $0x2060,$0
 
 pro2Ret:
 popw    %es
@@ -94,7 +96,6 @@ readToRam:
    pushw %es
 
    movw $0,%bx
-   movw $0x820,%ax
    movw %ax,%es
    
    movb $2,%ah

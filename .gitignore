@@ -4,5 +4,4 @@
 *.elf
 *.img
 cscope.*
-*.txt
 tags

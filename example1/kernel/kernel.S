@@ -3,7 +3,7 @@
 .code16
 .section .text
 
-movw        $0x820,%ax
+movw        $0x1040,%ax
 movw        %ax,%ds
 movw        $16,%bx
 mul         %bx
@@ -12,7 +12,7 @@ movl        $0,%edi
 movw        %ax,%ds:34(,%edi,1)
 movw        %dx,%ds:36(,%edi,1)
 
-movw        $0x800,%ax
+movw        $0x2040,%ax
 movw        $16,%bx
 mul         %bx
 movl        $0,%edi
@@ -22,7 +22,7 @@ movw        %bx,%ds:desc.baseL(%eax,%edi,1 )
 movb        %dl,%ds:desc.baseM(%eax,%edi,1 )
 movb        %dh,%ds:desc.baseH(%eax,%edi,1 )
 
-movw        $0x820,%ax
+movw        $0x1040,%ax
 movw        $16,%bx
 mul         %bx
 movl        $0,%edi
@@ -60,11 +60,11 @@ movl        %cr0,%eax
 andl        $0xFFFE,%eax
 movl        %eax,%cr0
 
-Jump16      0x800,0x0bd
+Jump16      0x2040,0x0bd
         
 DisableA20
 sti
-movw        $0x820,%ax
+movw        $0x1040,%ax
 movw        %ax,%ds
 movw        $38,%si
 movl        $0,%edi
@@ -91,7 +91,7 @@ movl        %ebx,%eax
 movb        %dl,%ds:0(%eax,%edi,1)
 incl        %ebx
 loop NextCh
-movw        $0x820,%ax
+movw        $0x1040,%ax
 movw        %ax,%es
 movw        $294,%ax
 movw        $768,%cx
@@ -100,7 +100,6 @@ call dispMessage
 inf:jmp inf
 
 ToASCII:
-#addb    $48,%al
 andb        $0x0f,%al
 addb        $0x90,%al
 daa
