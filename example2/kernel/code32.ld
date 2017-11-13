@@ -1,6 +1,6 @@
 SECTIONS
 {
-. = 0x1040;
+. = 0x20600;
 .text :
 {
 _ftext = .;

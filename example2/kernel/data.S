@@ -21,7 +21,7 @@ normal:
             .byte           0x0
             .byte           0x0
 code32:
-            .word           1     #c32Len-1
+            .word           0x52     #c32Len-1
             .word           0x0
             .byte           0x0
             .byte           ATCE
@@ -60,8 +60,6 @@ vgdtr:
 vgdtrBaseL: .word           55
 vgttrBaseH: .word           0x0
             .word           0x0
-
-buffer:     .space          bufLen
 
 saveSp:     .word           0x00
 saveSs:     .word           0x00

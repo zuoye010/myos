@@ -22,8 +22,8 @@
 
 .macro          Jump32  Selector,Offset
                 .byte      0x0ea     
-                .word        \OFFSET
-                .word       0
+                .word      \Offset   
+                .word      0x0     
                 .word      \Selector 
 .endm
 
@@ -36,7 +36,7 @@
 .macro          CALL32  Selector,Offset
                 .byte      0x9a      
                 .word      \Offset
-                .word      0
+                .word      0x0
                 .word      \Selector 
 .endm
 

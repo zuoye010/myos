@@ -29,7 +29,7 @@ movw    $0x2060,%ax
 call    readToRam
 
 movb    $5,%cl
-movw    $0x2060,%ax
+movw    $0x2080,%ax
 call    readToRam
 
 movw    $0x1b5, %ax

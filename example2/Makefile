@@ -13,10 +13,10 @@ boot.img: boot/boot.bin	kernel/kernel.img
 #	@cp ./program2/program2.img ./
 	@dd if=/dev/zero of=emptydisk.img bs=512 count=2880 #生成空白软盘镜像文件
 	@dd if=boot.bin of=boot.img bs=512 count=1 #用 bin file 生成对应的镜像文件
-	@dd if=kernel.img of=boot.img skip=0 seek=1 bs=512 count=2 #在 bin 生成的镜像文件后补上kernel
+	@dd if=kernel.img of=boot.img skip=0 seek=1 bs=512 count=4 #在 bin 生成的镜像文件后补上kernel
 #	@dd if=program1.img of=boot.img skip=0 seek=2 bs=512 count=1 #在 bin 生成的镜像文件后补上program1
 #	@dd if=program2.img of=boot.img skip=0 seek=3 bs=512 count=1 #在 bin 生成的镜像文件后补上program1
-	@dd if=emptydisk.img of=boot.img skip=3 seek=3 bs=512 count=2877 #在 bin 生成的镜像文件后补上空白，最后成为合适大小的软盘镜像
+	@dd if=emptydisk.img of=boot.img skip=5 seek=5 bs=512 count=2875 #在 bin 生成的镜像文件后补上空白，最后成为合适大小的软盘镜像
 
 boot/boot.bin:
 	@cd boot;make clean;make
