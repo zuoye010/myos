@@ -2,12 +2,6 @@
 
 .section .data
 
-.equ        dataLen,        16
-.equ        gdtLen,         32
-.equ        normalSel,      8
-.equ        codeKSel,       16
-.equ        ldtSel,         24
-
 gdt:
 dummy:      .space          descSize
 normal:
@@ -25,7 +19,7 @@ codeK:
             .byte           0x0
             .byte           0x0
 ldtTable:
-            .word           0x2f    #ldtLen-1
+            .word           0x2f    #ldtLen-1=47
             .word           0x0
             .byte           0x0
             .byte           ATLDT

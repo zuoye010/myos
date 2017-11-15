@@ -1,9 +1,5 @@
 .include "/home/ml/myos/include/386scd.h"
-
-.equ        videoSel,       16+TIL
-.equ        toLdtSel,       24+TIL
-.equ        mDataSel,       32+TIL
-.equ        stacksSel,      40+TIL
+.include "/home/ml/myos/example3/local.h"
 
 .code16
 .section .text
@@ -15,7 +11,7 @@ movw    $1986,%di
 movw    mDataSel,%ax
 movw    %ax,%fs
 movw    $0,%si
-call16  0x10,0x0
+call16  codeCSel,dispMsgAddress
 
 movw    toLdtSel,%ax
 movw    %ax,%gs
@@ -24,17 +20,17 @@ movl    $0,%edi
 movl    $0,%eax
 movw    %gs:(%eax,%edi,1),%dx
 popl    %edi
-movw    $7,%si
+movw    bufferAddress,%si
 movw    $4,%cx
 vir:
 rol     $4,%dx
 movb    %dl,%al
-call16  0x10,0x1
+call16  codeCSel,hToAsciiAddress
 movb    %al,%fs:0(,%esi,1)
 inc     %si
 loop    vir
 movb    $72,%fs:0(,%esi,1)  
-movw    $7,%si
-call16  0x10,0x0
-jump16  0x8,0x1
+movw    bufferAddress,%si
+call16  codeCSel,dispMsgAddress
+jump16  codeKSel,vir3Address
 .org 512

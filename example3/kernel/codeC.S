@@ -6,7 +6,7 @@
 dispMsg:
 movb    $0x4e,%ah
 disp1:
-movb    %fs:(,%esi,1)
+movb    %fs:(,%esi,1),%al
 inc     %si
 or      %al,%al
 jz      disp2

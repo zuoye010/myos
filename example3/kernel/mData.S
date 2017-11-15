@@ -2,7 +2,8 @@
 
 .section .data
 
-message     .ascii      'Value=',0
-buffer      .fill 80,1,0
+message:    .ascii      "Value="
+            .byte       0
+buffer:     .fill 80,1,0
 
 .org 512

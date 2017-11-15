@@ -5,11 +5,15 @@ OBJCOPY=objcopy
 
 all: kernel.img
 
-kernel.img: data.bin kernel.bin code32.bin code16.bin
+kernel.img: data.bin gdt.bin ldt.bin mData.bin kernel.bin codeK.bin codeL.bin codeC.bin
 	@dd if=data.bin of=kernel.img bs=512 count=1  #用 bin file 生成对应的镜像文件
-	@dd if=kernel.bin of=kernel.img bs=512 count=1 seek=1 #用 bin file 生成对应的镜像文件
-	@dd if=code32.bin of=kernel.img bs=512 count=1 seek=2 #用 bin file 生成对应的镜像文件
-	@dd if=code16.bin of=kernel.img bs=512 count=1 seek=3 #用 bin file 生成对应的镜像文件
+	@dd if=gdt.bin of=kernel.img bs=512 count=1 seek=1 #用 bin file 生成对应的镜像文件
+	@dd if=ldt.bin of=kernel.img bs=512 count=1 seek=2 #用 bin file 生成对应的镜像文件
+	@dd if=mData.bin of=kernel.img bs=512 count=1 seek=3 #用 bin file 生成对应的镜像文件
+	@dd if=kernel.bin of=kernel.img bs=512 count=1 seek=4 #用 bin file 生成对应的镜像文件
+	@dd if=codeK.bin of=kernel.img bs=512 count=1 seek=5 #用 bin file 生成对应的镜像文件
+	@dd if=codeL.bin of=kernel.img bs=512 count=1 seek=6 #用 bin file 生成对应的镜像文件
+	@dd if=codeC.bin of=kernel.img bs=512 count=1 seek=7 #用 bin file 生成对应的镜像文件
 
 kernel.bin: kernel.elf
 	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary kernel.elf kernel.bin
@@ -20,23 +24,32 @@ kernel.elf: kernel.o
 kernel.o: kernel.S
 	$(CC) -c kernel.S
 
-code32.bin: code32.elf
-	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary code32.elf code32.bin
+codeK.bin: codeK.elf
+	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary codeK.elf codeK.bin
 
-code32.elf: code32.o
-	$(LD) code32.o -o code32.elf -e c -Tcode32.ld
+codeK.elf: codeK.o
+	$(LD) codeK.o -o codeK.elf -e c -TcodeK.ld
 
-code32.o: code32.S
-	$(CC) -c code32.S
+codeK.o: codeK.S
+	$(CC) -c codeK.S
 
-code16.bin: code16.elf
-	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary code16.elf code16.bin
+codeL.bin: codeL.elf
+	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary codeL.elf codeL.bin
 
-code16.elf: code16.o
-	$(LD) code16.o -o code16.elf -e c -Tcode16.ld
+codeL.elf: codeL.o
+	$(LD) codeL.o -o codeL.elf -e c -TcodeL.ld
 
-code16.o: code16.S
-	$(CC) -c code16.S
+codeL.o: codeL.S
+	$(CC) -c codeL.S
+
+codeC.bin: codeC.elf
+	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary codeC.elf codeC.bin
+
+codeC.elf: codeC.o
+	$(LD) codeC.o -o codeC.elf -e c -TcodeC.ld
+
+codeC.o: codeC.S
+	$(CC) -c codeC.S
 
 data.bin: data.elf
 	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary data.elf data.bin
@@ -46,6 +59,33 @@ data.elf: data.o
 
 data.o: data.S
 	$(CC) -c data.S
+
+gdt.bin: gdt.elf
+	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary gdt.elf gdt.bin
+
+gdt.elf: gdt.o
+	$(LD) gdt.o -o gdt.elf -e c -Tgdt.ld
+
+gdt.o: gdt.S
+	$(CC) -c gdt.S
+
+ldt.bin: ldt.elf
+	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary ldt.elf ldt.bin
+
+ldt.elf: ldt.o
+	$(LD) ldt.o -o ldt.elf -e c -Tldt.ld
+
+ldt.o: ldt.S
+	$(CC) -c ldt.S
+
+mData.bin: mData.elf
+	@$(OBJCOPY) -R .pdr -R .comment -R.note -S -O binary mData.elf mData.bin
+
+mData.elf: mData.o
+	$(LD) mData.o -o mData.elf -e c -TmData.ld
+
+mData.o: mData.S
+	$(CC) -c mData.S
 
 clean:
 	@rm -rf *.o *.elf *.bin *.img

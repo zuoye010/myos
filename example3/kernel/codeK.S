@@ -1,10 +1,5 @@
 .include "/home/ml/myos/include/386scd.h"
-
-.equ        normalSel,      8
-.equ        ldtSel,         24
-.equ        codeLSel,       0+TIL
-.equ        stacksSel,      40+TIL
-.equ        stackLen,       255
+.include "/home/ml/myos/example3/local.h"
 
 .code16
 .section .text
@@ -15,7 +10,7 @@ lldt        %ax
 movw        stacksSel,%ax
 movw        %ax,%ss
 movw        stackLen,%sp
-jump16      codeLSel,vir2
+jump16      codeLSel,vir2Address
 vir3:
 movw        normalSel,%ax
 movw        %ax,%es
