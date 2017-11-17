@@ -1,5 +1,4 @@
 .include "/home/ml/myos/include/386scd.h"
-.include "/home/ml/myos/example3/local.h"
 
 .code16
 .section .text
