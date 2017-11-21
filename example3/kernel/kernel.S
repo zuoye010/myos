@@ -67,12 +67,14 @@ pushw       %ds
 movw        $0x1080,%ax
 movw        %ax,%ds
 movw        $6,%cx              #ldtNum=6
-movw        $0,%si
+movl        $0,%esi
 movl        $0,%eax
 initL:
+movl        $0,%ebx
 movw        %ds:desc.baseL(%eax,%esi,1),%bx
 movzx       %bx,%ebx
 shl         $4,%ebx
+movl        $0,%edx
 shld        $16,%ebx,%edx
 movw        %bx,%ds:desc.baseL(%eax,%esi,1)
 movb        %dl,%ds:desc.baseM(%eax,%esi,1)

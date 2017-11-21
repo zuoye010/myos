@@ -3,33 +3,33 @@
 .code16
 .section .text
 
-movw    videoSel,%ax
+movw    $(16+TIL),%ax
 movw    %ax,%es
 movw    $1986,%di
 
-movw    mDataSel,%ax
+movw    $(32+TIL),%ax
 movw    %ax,%fs
 movw    $0,%si
-call16  codeCSel,dispMsgAddress
+call16  (8+TIL),0
 
-movw    toLdtSel,%ax
+movw    $(24+TIL),%ax
 movw    %ax,%gs
 pushl   %edi
 movl    $0,%edi
 movl    $0,%eax
 movw    %gs:(%eax,%edi,1),%dx
 popl    %edi
-movw    bufferAddress,%si
+movw    $7,%si
 movw    $4,%cx
 vir:
 rol     $4,%dx
 movb    %dl,%al
-call16  codeCSel,hToAsciiAddress
+call16  (8+TIL),0x1e
 movb    %al,%fs:0(,%esi,1)
 inc     %si
 loop    vir
 movb    $72,%fs:0(,%esi,1)  
-movw    bufferAddress,%si
-call16  codeCSel,dispMsgAddress
-jump16  codeKSel,vir3Address
+movw    $7,%si
+call16  (8+TIL),0x0
+jump16  16,0x14
 .org 512
