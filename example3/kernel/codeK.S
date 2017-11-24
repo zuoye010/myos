@@ -8,7 +8,7 @@ lldt        %ax
 
 movw        $(40+TIL),%ax
 movw        %ax,%ss
-movw        $255,%sp
+movw        $0x100,%sp
 Jump16      0x0+TIL,0x0
 vir3:
 movw        0x8,%ax

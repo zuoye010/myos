@@ -19,10 +19,15 @@ lret
 
 hToASCII:
 andb        $0x0f,%al
-addb        $0x90,%al
-daa
-adcb        $0x40,%al
-daa
+cmpb        $0x9,%al
+jb          useAscii
+addb        $0x30,%al
+jmp         myRet
+nop
+useAscii:
+addb        $0x57,%al
+nop
+myRet:
 lret
 
 .org 512
