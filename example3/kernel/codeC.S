@@ -18,16 +18,21 @@ disp2:
 lret
 
 hToASCII:
+pushw       %bx
 andb        $0x0f,%al
-cmpb        $0x9,%al
-jb          useAscii
+movb        %al,%bl
 addb        $0x30,%al
-jmp         myRet
+cmpb        $0x9,%bl
+popw        %bx
+ja          Next
+addb        $27,%al
 nop
-useAscii:
-addb        $0x57,%al
 nop
-myRet:
+nop
+nop
+nop
+Next:
+nop
 lret
 
 .org 512
