@@ -11,7 +11,7 @@ codeL:
             .byte           0x0
             .byte           0x0
 codeC:
-            .word           0x22    #codeCLen-1
+            .word           0x2e    #codeCLen-1
             .word           0x20a0
             .byte           0x0
             .byte           ATCE

@@ -24,15 +24,9 @@ movb        %al,%bl
 addb        $0x30,%al
 cmpb        $0x9,%bl
 popw        %bx
-ja          Next
+jb          Next
 addb        $27,%al
-nop
-nop
-nop
-nop
-nop
 Next:
-nop
 lret
 
 .org 512

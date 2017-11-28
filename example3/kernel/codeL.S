@@ -31,5 +31,5 @@ loop    vir
 movb    $72,%fs:0(,%esi,1)  
 movw    $7,%si
 call16  (8+TIL),0x0
-jump16  16,0x14
+Jump16  16,0x13
 .org 512
