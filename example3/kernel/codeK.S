@@ -11,7 +11,7 @@ movw        %ax,%ss
 movw        $0x100,%sp
 Jump16      0x0+TIL,0x0
 vir3:
-movw        0x8,%ax
+movw        $0x8,%ax
 movw        %ax,%es
 movw        %ax,%fs
 movw        %ax,%gs

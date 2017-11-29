@@ -25,7 +25,7 @@ addb        $0x30,%al
 cmpb        $0x9,%bl
 popw        %bx
 jb          Next
-addb        $27,%al
+addb        $0x07,%al
 Next:
 lret
 

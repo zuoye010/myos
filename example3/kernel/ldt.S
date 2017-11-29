@@ -4,7 +4,7 @@
 
 ldt:
 codeL:
-            .word           0x60    #codeLLen-1
+            .word           0x6a    #codeLLen-1
             .word           0x2080
             .byte           0x0
             .byte           ATCE
