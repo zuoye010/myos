@@ -1,8 +1,8 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .section .data
         .long       0x0         #back
-        .long       0x0         #stack0Sp
+        .long       0x200         #stack0Sp
         .long       0x0         #stack0Ss
         .long       0x0         #stack1Sp
         .long       0x0         #stack1Ss

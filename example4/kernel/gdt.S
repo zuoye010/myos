@@ -1,4 +1,4 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .section .data
 
@@ -26,7 +26,7 @@ demoTss:
             .byte           0x0
             .byte           0x0
 demoLdt:
-            .word           0x3f    #ldtLen-1=71
+            .word           0x47    #ldtLen-1=71
             .word           0x1080
             .byte           0x0
             .byte           ATLDT

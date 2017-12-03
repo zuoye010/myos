@@ -1,4 +1,4 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .section .data
 
@@ -42,9 +42,28 @@ echoSub:
             .word           0x2e    #codeCLen-1
             .word           0x20c0
             .byte           0x0
-            .byte           ATCE+DPL1
+            .byte           ATCER+DPL1
             .byte           D32
             .byte           0x0
 
 toT32GateA:
+            .word           0x0
+            .word           0x20+TIL
+            .byte           0x0
+            .byte           AT386CGate
+            .word           0x0
+
+toT32GateB:
+            .word           0x0
+            .word           0x20+TIL
+            .byte           0x0
+            .byte           AT386CGate+DPL3
+            .word           0x0
+
+toEchoGate:
+            .word           0x5
+            .word           0x28+TIL
+            .byte           0x0
+            .byte           AT386CGate+DPL3
+            .word           0x0
 .org 512
