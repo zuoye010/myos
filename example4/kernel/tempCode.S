@@ -1,17 +1,19 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .code16
 .section .text
 
 movw        $24,%ax
+ltr         %ax 
+
+movw        $32,%ax
 lldt        %ax 
 
-movw        $(40+TIL),%ax
-movw        %ax,%ss
-movw        $0x100,%sp
-Jump16      0x0+TIL,0x0
-vir3:
+Jump16      0x30,0 
+
+ToReal:
 movw        $0x8,%ax
+movw        %ax,%ds
 movw        %ax,%es
 movw        %ax,%fs
 movw        %ax,%gs

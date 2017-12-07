@@ -2,10 +2,10 @@
 
 .section .data
         .long       0x0         #back
-        .long       0x200         #stack0Sp
-        .long       0x0         #stack0Ss
-        .long       0x0         #stack1Sp
-        .long       0x0         #stack1Ss
+        .long       0x200       #stack0Sp
+        .long       0x9800      #stack0Ss
+        .long       0x200       #stack1Sp
+        .long       0x9810      #stack1Ss
         .long       0x0         #stack2Sp
         .long       0x0         #stack2Ss
         .long       0x0         #cr3
@@ -25,8 +25,8 @@
         .long       0x0         #ds
         .long       0x0         #fs
         .long       0x0         #gs
-        .long       0x0         #ldt
+        .long       0x20        #ldt
         .word       0x0         #trace
-        .word       0x0         #ioMap
-        .word       0x0         #ioMap end
+        .word       0x6A        #ioMap
+        .word       0xffff      #ioMap end
 .org 512

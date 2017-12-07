@@ -5,7 +5,7 @@ OBJCOPY=objcopy
 
 all: kernel.img
 
-kernel.img: data.bin gdt.bin ldt.bin mData.bin kernel.bin codeK.bin codeL.bin codeC.bin
+kernel.img: data.bin gdt.bin ldt.bin kernel.bin tempCode.bin t32Code.bin echoSub.bin
 	@dd if=data.bin of=kernel.img bs=512 count=1  #用 bin file 生成对应的镜像文件
 	@dd if=gdt.bin of=kernel.img bs=512 count=1 seek=1 #用 bin file 生成对应的镜像文件
 	@dd if=ldt.bin of=kernel.img bs=512 count=1 seek=2 #用 bin file 生成对应的镜像文件

@@ -1,32 +1,33 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
-.code16
+.code32
 .section .text
+Message:    .ascii          "CPL="
+            .byte           0
 
-dispMsg:
+cld
+pushl   %ebp
+movl    %esp,%ebp
+movw    $(0x28+TIL+RP1),%ax
+movw    %ax,%ds
+movw    $0x10,%ax
+movw    %ax,%es
+movl    $1996,%edi
+movl    $0,%esi
+
 movb    $0x4e,%ah
-disp1:
-movb    %fs:(,%esi,1),%al
-inc     %si
+echoSub1:
+lodsb
 or      %al,%al
-jz      disp2
-movw    %ax,%es:(,%edi,1)
-inc     %di
-inc     %di
-jmp     disp1
-disp2:
-lret
-
-hToASCII:
-pushw       %bx
-andb        $0x0f,%al
-movb        %al,%bl
-addb        $0x30,%al
-cmpb        $0x9,%bl
-popw        %bx
-jb          Next
-addb        $0x07,%al
-Next:
-lret
+jz      echoSub2
+stosw
+jmp     echoSub1
+movl    $ss:8(,%ebp,1),%eax
+andb    $3,%al
+addb    $0x30,%al
+movb    $0x4e,%ah
+stosw
+popl    %ebp
+retf
 
 .org 512
