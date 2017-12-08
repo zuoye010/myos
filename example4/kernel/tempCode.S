@@ -9,7 +9,7 @@ ltr         %ax
 movw        $32,%ax
 lldt        %ax 
 
-Jump16      0x30,0 
+Jump16      (0x30+TIL),0 
 
 ToReal:
 movw        $0x8,%ax
@@ -22,6 +22,6 @@ movw        %ax,%ss
 movl        %cr0,%eax
 andb        $0xFE,%al
 movl        %eax,%cr0
-Jump16      0x2040,0xaa
+Jump16      0x2040,0x4f
 
 .org 512

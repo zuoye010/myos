@@ -77,9 +77,9 @@ movzx       %bx,%ebx
 shl         $4,%ebx
 movl        $0,%edx
 shld        $16,%ebx,%edx
-movw        %bx,%ds:desc.baseL(%eax,%esi,1)
-movb        %dl,%ds:desc.baseM(%eax,%esi,1)
-movb        %dh,%ds:desc.baseH(%eax,%esi,1)
+movw        %bx,%fs:desc.baseL(%eax,%esi,1)
+movb        %dl,%fs:desc.baseM(%eax,%esi,1)
+movb        %dh,%fs:desc.baseH(%eax,%esi,1)
 addl        $8,%eax
 loop        initL
 ret

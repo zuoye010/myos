@@ -25,21 +25,21 @@ stack3:
             .byte           0x0
             .byte           0x0
 demoCode:
-            .word           0x6a    #codeLLen-1
+            .word           0xd     #demoCodeLen-1
             .word           0x20a0
             .byte           0x0
             .byte           ATCE+DPL3
             .byte           D32
             .byte           0x0
 t32Code:
-            .word           0x2e    #codeCLen-1
+            .word           0x1b    #t32CodeLen-1
             .word           0x2080
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 echoSub:
-            .word           0x2e    #codeCLen-1
+            .word           0x3a    #echoSubLen-1
             .word           0x20c0
             .byte           0x0
             .byte           ATCER+DPL1
@@ -54,7 +54,7 @@ toT32GateA:
             .word           0x0
 
 toT32GateB:
-            .word           0x0
+            .word           0x17
             .word           0x20+TIL
             .byte           0x0
             .byte           AT386CGate+DPL3
@@ -62,7 +62,7 @@ toT32GateB:
 
 toEchoGate:
             .word           0x5
-            .word           0x28+TIL
+            .word           0x28+TIL+RPL3
             .byte           0x0
             .byte           AT386CGate+DPL3
             .word           0x0
