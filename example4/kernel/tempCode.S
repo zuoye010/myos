@@ -9,7 +9,7 @@ ltr         %ax
 movw        $32,%ax
 lldt        %ax 
 
-Jump16      (0x30+TIL),0 
+Jump16      (0x30+TIL),0        #to t32Code rpl0     32
 
 ToReal:
 movw        $0x8,%ax

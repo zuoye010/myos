@@ -11,7 +11,7 @@ pushl   $(0x10+TIL+RPL3)
 pushl   $0x200
 pushl   $(0x18+TIL+RPL3)
 pushl   $0
-retf
+retf                        #to demoCode rpl0 32
 
 T32End:
 Jump32  0x28,0x11           #offset of ToReal

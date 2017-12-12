@@ -28,7 +28,7 @@ movl        %cr0,%eax
 orl         $1,%eax
 movl        %eax,%cr0
 
-Jump16      0x28,0x0
+Jump16      0x28,0x0        #to tempCode rpl0   16
 
 Real:
 movw        $0x1040,%ax

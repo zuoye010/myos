@@ -25,21 +25,21 @@ stack3:
             .byte           0x0
             .byte           0x0
 demoCode:
-            .word           0xd     #demoCodeLen-1
+            .word           0xe     #demoCodeLen-1
             .word           0x20a0
             .byte           0x0
             .byte           ATCE+DPL3
             .byte           D32
             .byte           0x0
 t32Code:
-            .word           0x1b    #t32CodeLen-1
+            .word           0x1e    #t32CodeLen-1
             .word           0x2080
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 echoSub:
-            .word           0x3a    #echoSubLen-1
+            .word           0x3b    #echoSubLen-1
             .word           0x20c0
             .byte           0x0
             .byte           ATCER+DPL1
