@@ -3,7 +3,7 @@
 movw    $0x7c0,%ax
 movw    %ax,%ds
 movw    %ax,%es
-movw    $0x9860,%ax
+movw    $0x9880,%ax
 movw    %ax,%ss
 movw    $0x200,%sp
 movl    $0,%edi

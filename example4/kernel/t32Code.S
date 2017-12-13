@@ -4,7 +4,7 @@
 .section .text
 
 T32Begin:
-movw    $(0x0+TIL),%ax
+movw    $(0x0+TIL+RPL0),%ax
 movw    %ax,%ss
 movl    $0x200,%esp
 pushl   $(0x10+TIL+RPL3)
