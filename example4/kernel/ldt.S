@@ -39,7 +39,7 @@ t32Code:
             .byte           D32
             .byte           0x0
 echoSub:
-            .word           0x3a    #echoSubLen-1
+            .word           0x3b    #echoSubLen-1
             .word           0x20c0
             .byte           0x0
             .byte           ATCER+DPL1

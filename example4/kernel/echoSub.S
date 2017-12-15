@@ -23,7 +23,7 @@ jz      echoSub2
 stosw
 jmp     echoSub1
 echoSub2:
-movl    0x98808(,%ebp,1),%eax
+movl    %ss:8(,%ebp,1),%eax
 andb    $3,%al
 addb    $0x30,%al
 movb    $0x4e,%ah
