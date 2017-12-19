@@ -3,7 +3,7 @@
 .section .data
 
 vgdtr:
-vgdtrBaseL: .word           47
+vgdtrBaseL: .word           63
 vgttrBaseH: .word           0x0
             .word           0x0
 

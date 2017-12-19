@@ -2,33 +2,41 @@
 
 .code32
 .section .text
-Message:    .ascii          "CPL="
-            .byte           0
 
-cld
-pushl   %ebp
-movl    %esp,%ebp
-movw    $(0x28+TIL+RPL1),%ax
-movw    %ax,%ds
-movw    $0x10,%ax
-movw    %ax,%es
-movl    $1996,%edi
-movl    $0,%esi
+pushl       %ebp
+movl        %esp,%ebp
+pushal
+movl        %ss:12(,%ebp,1),%esi
+movb        $0x4a,%ah
+jmp         subR2
+subR1:
+            stosw
+subR2:  
+            lodsb
+or          %al,%al
+jnz         subR1
+movl        %ss:16(,%ebp,1),%edx
+movl        $8,%ecx
+subR3:
+rol         $4,%edx
+movb        %dl,%al
+call        hToAscii
+stosw
+loop        subR3
+popal
+pop         %ebp
+ret         $8                  #may be retf ?  or lret  ?
 
-movb    $0x4e,%ah
-echoSub1:
-lodsb
-or      %al,%al
-jz      echoSub2
-stosw
-jmp     echoSub1
-echoSub2:
-movl    %ss:8(,%ebp,1),%eax
-andb    $3,%al
-addb    $0x30,%al
-movb    $0x4e,%ah
-stosw
-popl    %ebp
-retf
+hToAscii:
+pushw       %bx
+andb        $0x0f,%al
+movb        %al,%bl
+addb        $0x30,%al
+cmpb        $0x9,%bl
+popw        %bx
+jb          Next
+addb        $0x07,%al
+Next:
+lret
 
 .org 512

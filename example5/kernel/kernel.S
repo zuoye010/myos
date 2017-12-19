@@ -28,7 +28,7 @@ movl        %cr0,%eax
 orl         $1,%eax
 movl        %eax,%cr0
 
-Jump16      0x28,0x0        #to tempCode rpl0   16
+Jump16      0x30,0x0        #to tempCode rpl0   16
 
 Real:
 movw        $0x1040,%ax
@@ -43,7 +43,7 @@ initGdt:
 pushw       %ds
 movw        $0x1060,%ax
 movw        %ax,%ds
-movw        $5,%cx              #ldtNum=6
+movw        $5,%cx              #gdtNum=5
 movl        $0,%esi
 movl        $24,%eax
 initG:

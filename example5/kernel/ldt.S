@@ -7,63 +7,54 @@ stack0:
             .word           511     #stackLen-1
             .word           0x9800
             .byte           0x0
-            .byte           ATDW+DPL0
+            .byte           ATDW
             .byte           D32
             .byte           0x0
-stack1:      
+stack2:      
             .word           511     #stackLen-1
-            .word           0x9820
+            .word           0x9840
             .byte           0x0
-            .byte           ATDW+DPL1
+            .byte           ATDW+DPL2
             .byte           D32
-            .byte           0x0
-stack3:      
-            .word           511     #stackLen-1
-            .word           0x9860
-            .byte           0x0
-            .byte           ATDW+DPL3
-            .byte           0x0
             .byte           0x0
 demoCode:
-            .word           0xd     #demoCodeLen-1
-            .word           0x20a0
-            .byte           0x0
-            .byte           ATCE+DPL3
-            .byte           D32
-            .byte           0x0
-t32Code:
-            .word           0x1d    #t32CodeLen-1
+            .word           0x5a    #demoCodeLen-1
             .word           0x2080
             .byte           0x0
-            .byte           ATCE
+            .byte           ATCE+DPL2
             .byte           D32
             .byte           0x0
-echoSub:
-            .word           0x3b    #echoSubLen-1
-            .word           0x20c0
+demoData:
+            .word           0x6     #t32CodeLen-1
+            .word           0x10e0
             .byte           0x0
-            .byte           ATCER+DPL1
+            .byte           ATDW+DPL3
             .byte           D32
             .byte           0x0
-
-toT32GateA:
-            .word           0x0
-            .word           0x20+TIL
+toDLdt:
+            .word           0x3f    #ldtLen-1
+            .word           0x1080
             .byte           0x0
-            .byte           AT386CGate
+            .byte           ATDW+DPL2
+            .byte           0x0 
+            .byte           0x0
+toTTss:
+            .word           0x69    #ldtLen-1
+            .word           0x10a0
+            .byte           0x0
+            .byte           ATDW+DPL2
+            .byte           0x0 
+            .byte           0x0
+toSubR:
             .word           0x0
-
-toT32GateB:
-            .word           0x17
-            .word           0x20+TIL
+            .word           0x38
             .byte           0x0
             .byte           AT386CGate+DPL3
             .word           0x0
-
-toEchoGate:
-            .word           0x5
-            .word           0x28+TIL+RPL3
-            .byte           0x0
-            .byte           AT386CGate+DPL3
+toTempT:
             .word           0x0
-.org 512
+            .word           0x28
+            .byte           0x0
+            .byte           ATTaskGate+DPL3
+            .word           0x0
+
