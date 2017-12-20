@@ -25,7 +25,7 @@ stosw
 loop        subR3
 popal
 pop         %ebp
-ret         $8                  #may be retf ?  or lret  ?
+lret        $8                  #may be retf ?  or lret  ?
 
 hToAscii:
 pushw       %bx
@@ -37,6 +37,6 @@ popw        %bx
 jb          Next
 addb        $0x07,%al
 Next:
-lret
+ret
 
 .org 512

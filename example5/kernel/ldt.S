@@ -18,7 +18,7 @@ stack2:
             .byte           D32
             .byte           0x0
 demoCode:
-            .word           0x5a    #demoCodeLen-1
+            .word           0x52    #demoCodeLen-1
             .word           0x2080
             .byte           0x0
             .byte           ATCE+DPL2
