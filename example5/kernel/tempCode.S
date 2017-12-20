@@ -6,7 +6,7 @@
 movw        $0x28,%ax
 ltr         %ax 
 
-Jump16      0x20,0        #to t32Code rpl0     32
+Jump16      0x20,0        #to demoCode rpl2     32
 
 clts
 movl        %cr0,%eax
