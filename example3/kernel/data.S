@@ -1,11 +1,11 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .section .data
 
 vgdtr:
-vgdtrBaseL: .word           31
+vgdtrLimit: .word           31
+vgdtrBaseL: .word           0x0
 vgttrBaseH: .word           0x0
-            .word           0x0
 
 saveSp:     .word           0x00
 saveSs:     .word           0x00

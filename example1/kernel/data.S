@@ -1,4 +1,4 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .section .data
 
@@ -33,8 +33,8 @@ dataD:
             .byte           0x0
 
 vgdtr:
-vgdtrBaseL: .word           31
+vgdtrLimit: .word           31
+vgdtrBaseL: .word           0x0
 vgttrBaseH: .word           0x0
-            .word           0x0
 
 buffer:     .space          bufLen

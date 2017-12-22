@@ -3,9 +3,9 @@
 .section .data
 
 vgdtr:
-vgdtrBaseL: .word           47
+vgdtrLimit: .word           47
+vgdtrBaseL: .word           0x0
 vgttrBaseH: .word           0x0
-            .word           0x0
 
 saveSp:     .word           0x00
 saveSs:     .word           0x00

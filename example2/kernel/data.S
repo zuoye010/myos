@@ -1,4 +1,4 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .section .data
 
@@ -57,9 +57,9 @@ stackS:
             .byte           0x0
 
 vgdtr:
-vgdtrBaseL: .word           55
+vgdtrLimit: .word           55
+vgdtrBaseL: .word           0x0
 vgttrBaseH: .word           0x0
-            .word           0x0
 
 saveSp:     .word           0x00
 saveSs:     .word           0x00

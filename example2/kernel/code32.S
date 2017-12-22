@@ -1,4 +1,4 @@
-.include "/home/ml/myos/include/386scd.h"
+.include "/home/xx/myos/include/386scd.h"
 
 .code32
 .section .text
