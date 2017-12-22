@@ -2,6 +2,7 @@
 
 .section .data
 
-flag:     .byte         0x00
+mess:     .byte         '8'
+          .byte         0x4e
 
 .org 512

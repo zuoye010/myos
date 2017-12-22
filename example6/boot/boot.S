@@ -33,23 +33,47 @@ movw    $0x10a0,%ax
 call    readToRam
 
 movb    $6,%cl
-movw    $0x2040,%ax
+movw    $0x10c0,%ax
 call    readToRam
 
 movb    $7,%cl
-movw    $0x2060,%ax
+movw    $0x1400,%ax
 call    readToRam
 
 movb    $8,%cl
-movw    $0x2080,%ax
+movw    $0x1420,%ax
 call    readToRam
 
 movb    $9,%cl
-movw    $0x20a0,%ax
+movw    $0x1440,%ax
 call    readToRam
 
 movb    $10,%cl
+movw    $0x1460,%ax
+call    readToRam
+
+movb    $11,%cl
+movw    $0x2040,%ax
+call    readToRam
+
+movb    $12,%cl
+movw    $0x2060,%ax
+call    readToRam
+
+movb    $13,%cl
+movw    $0x2080,%ax
+call    readToRam
+
+movb    $14,%cl
+movw    $0x20a0,%ax
+call    readToRam
+
+movb    $15,%cl
 movw    $0x20c0,%ax
+call    readToRam
+
+movb    $16,%cl
+movw    $0x20e0,%ax
 call    readToRam
 
 movw    $0x1b5, %ax

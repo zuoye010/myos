@@ -3,16 +3,23 @@
 .section .data
 
 vgdtr:
-vgdtrBaseL: .word           47
-vgdtrBaseH: .word           0x0
-            .word           0x0
+vgdtrLimit:     .word           95
+vgdtrBaseL:     .word           0x0
+vgdtrBaseH:     .word           0x0
 
-igdtr:
-igdtrBaseL: .word           47
-igdtrBaseH: .word           0x0
-            .word           0x0
+vidtr:
+vidtrLimit:     .word           0x7FF
+vidtrBaseL:     .word           0x0
+vidtrBaseH:     .word           0x0
 
-saveSp:     .word           0x00
-saveSs:     .word           0x00
+norVidtr:
+norVidtrLimit:  .word           0x3FF
+norVidtrBaseL:  .word           0x0
+norVidtrBaseH:  .word           0x0
+
+saveSp:         .word           0x00
+saveSs:         .word           0x00
+
+iMaskRegV:      .byte           0x0
 
 .org 512
