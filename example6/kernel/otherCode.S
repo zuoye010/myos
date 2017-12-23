@@ -13,7 +13,7 @@ movb        $0x17,%ah
 movb        $0x21,%al
 movw        %ax,%es:0(,%edi,1)
 now:
-jmp         now
+#jmp         now
 
 popl        %edi        
 

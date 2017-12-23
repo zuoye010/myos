@@ -10,9 +10,9 @@ pushw       %gs
 pushl       %edi
 
 movl        $0x0,%edi
-movw        $0x48,%ax
+movw        $0x50,%ax
 movw        %ax,%ds
-movw        $0x38,%ax
+movw        $0x40,%ax
 movw        %ax,%fs
 movw        $0x28,%ax
 movw        %ax,%gs
