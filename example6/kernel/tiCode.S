@@ -1,6 +1,6 @@
 .include "/home/xx/myos/include/386scd.h"
 
-.code16
+.code32
 .section .text
 
 pushl       %eax
@@ -19,7 +19,7 @@ movw        %ax,%gs
 
 cmpb        $0x0,%ds:0(,%edi,1)
 jnz         Ti2
-movb        $18,%ds:0(,%edi,1)
+movb        $60000,%ds:0(,%edi,1)
 int         $0xfe
 
 cmpb        $0x30,%fs:0(,%edi,1)
@@ -33,7 +33,8 @@ decb        %ds:0(,%edi,1)
 popl        %edi
 popw        %gs
 popw        %fs
-popw        %ds
+popw        %ax
+movw        %ax,%ds
 movb        $0x20,%al
 outb        %al,$0x20
 popl        %eax

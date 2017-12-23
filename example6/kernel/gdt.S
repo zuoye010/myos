@@ -47,11 +47,11 @@ demoStack:                              #0x30
             .byte           0x0
             .byte           0x0
 echoCode:                               #0x38
-            .word           0x2b        #echoCodeLen-1
+            .word           0x32        #echoCodeLen-1
             .word           0x20a0      
             .byte           0x0
             .byte           ATCE
-            .byte           0x0
+            .byte           D32
             .byte           0x0
 echoData:                               #0x40
             .word           0x1         #echoDataLen-1
@@ -65,7 +65,7 @@ TiCode:                                 #0x48
             .word           0x20c0
             .byte           0x0
             .byte           ATCE
-            .byte           0x0
+            .byte           D32
             .byte           0x0
 TiData:                                 #0x50
             .word           0x0         #TiDataLen-1

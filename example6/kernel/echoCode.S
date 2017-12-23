@@ -1,6 +1,6 @@
 .include "/home/xx/myos/include/386scd.h"
 
-.code16
+.code32
 .section .text
 
 pushw       %ax
@@ -18,7 +18,8 @@ movw        %ax,%es:0(,%edi,1)
 
 popl        %edi
 popw        %es
-popw        %ds
+popw        %ax
+movw        %ax,%ds
 popw        %ax
 
 iret
