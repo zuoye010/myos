@@ -25,7 +25,7 @@ demoData:                           #0x10+TIL
             .byte           0x0
             .byte           0x0
 divide:                             #0x18+TIL
-            .word           0xf     #demoCodeLen-1
+            .word           0x14    #demoCodeLen-1
             .word           0x2160
             .byte           0x0
             .byte           ATCE
