@@ -16,6 +16,6 @@ movw        %ax,%ss
 movl        %cr0,%eax
 andb        $0xFE,%al
 movl        %eax,%cr0
-Jump16      0x2040,0x00
+Jump16      0x2040,0x7b
 
 .org 512

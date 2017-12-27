@@ -7,7 +7,7 @@ pushal
 cld
 movb        $7,%ah
 movb        $0x20,%al
-movw        $80,%cx
+movl        $2000,%ecx
 pushl       %edi
 rep         stosw
 popl        %edi

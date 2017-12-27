@@ -19,6 +19,7 @@ norVidtrBaseH:  .word           0x0
 
 saveSp:         .word           0x00        #4  ---18
 saveSs:         .word           0x00
+
                                             #   ---22
 mess:           .ascii          "Press a key[0,4,B,C,D]:$"
                 .byte           0x0

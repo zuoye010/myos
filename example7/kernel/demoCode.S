@@ -14,37 +14,37 @@ movl        $0,%edi
 movw        $0x28,%gs:96(,%edi,1)
 movw        $0x30,%ax
 ltr         %ax
-movw        $(0x10+TIL),%ax
+movw        $(0x10+TIL),%ax         #demoDataSel
 movw        %ax,%ds
-movw        $0x10,%ax
+movw        $0x10,%ax               #videoBufSel
 movw        %ax,%es
-movw        $0x38,%ax
+movw        $0x38,%ax               #bufferSel
 movw        %ax,%fs
 movw        %ax,%gs
 int         $0xff
 movl        $0,%edi
 movb        %fs:0(,%edi,1),%al
-cmpb        %al,$0x30                #cmp with '0'
+cmpb        $0x30,%al                #cmp with '0'
 jnz         demo4
 movw        $2000,%ax
 movb        $2,%cl
 div         %cl
 jmp         over
 demo4:
-cmp         %al,$0x34                #cmp with '4'
+cmpb        $0x34,%al                #cmp with '4'
 jnz         demo11
 movb        $100,%al
 add         $50,%al
 into
 jmp         over
 demo11:     
-cmp         %al,$0x42                #cmp with 'B'
+cmpb        $0x42,%al                #cmp with 'B'
 jnz         demo12
 movw        $(0x40+TIL),%ax
 movw        %ax,%gs
 jmp         over
 demo12:
-cmp         %al,$0x43
+cmpb        $0x43,%al
 jnz         demo13
 movl        %esp,%ebp
 movb        %ss:0(,%ebp,1),%al

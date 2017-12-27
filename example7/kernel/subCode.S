@@ -17,7 +17,7 @@ rol         $4,%dx
 movb        %dl,%al
 andb        $0xf,%al
 addb        $0x30,%al
-cmpb        %al,$0x39
+cmpb        $0x39,%al
 jbe         subR2
 addb        $7,%al
 subR2:
@@ -34,6 +34,6 @@ popw        %dx
 popw        %cx
 popw        %ax
 
-retf
+lret
 
 .org 512

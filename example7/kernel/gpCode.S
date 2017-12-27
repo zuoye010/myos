@@ -3,24 +3,24 @@
 .code32
 .section .text
 
-pushw       %ax
-pushw       %ds
-pushw       %es
+pushl       %ebp
+movl        %esp,%ebp
+pushl       %eax
+pushl       %esi
 pushl       %edi
 
-movl        $0x0,%edi
-movw        $0x40,%ax
-movw        %ax,%ds
-movw        $0x10,%ax
-movw        %ax,%es
-movw        %ds:0(,%edi,1),%ax
-movw        %ax,%es:0(,%edi,1)
+movl        $115,%esi
+movl        $0,%edi
+int         $0xfe
+movl        %ss:4(,%ebp,1),%eax
+CALL32      0x58,0x0
 
 popl        %edi
-popw        %es
-popw        %ax
-movw        %ax,%ds
-popw        %ax
+popl        %esi
+popl        %eax
+addw        $2,%ss:8(,%ebp,1)
+popl        %ebp
+addl        $4,%esp
 
 iret
 

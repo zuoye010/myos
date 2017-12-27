@@ -16,7 +16,10 @@ popl    %eax
 movb    $0,%dh
 call    dispMessage
 
+movb    $0,%ch
 movb    $2,%cl
+movb    $0,%dh
+movb    $0,%dl
 movw    $0x1040,%ax
 call    readToRam
 
@@ -80,35 +83,37 @@ movb    $17,%cl
 movw    $0x20a0,%ax
 call    readToRam
 
+movb    $0,%ch
 movb    $18,%cl
 movw    $0x20c0,%ax
 call    readToRam
 
-movb    $19,%cl
+movb    $1,%cl
+movb    $1,%dh
 movw    $0x20e0,%ax
 call    readToRam
 
-movb    $20,%cl
+movb    $2,%cl
 movw    $0x2100,%ax
 call    readToRam
 
-movb    $21,%cl
+movb    $3,%cl
 movw    $0x2120,%ax
 call    readToRam
 
-movb    $22,%cl
+movb    $4,%cl
 movw    $0x2140,%ax
 call    readToRam
 
-movb    $23,%cl
+movb    $5,%cl
 movw    $0x2160,%ax
 call    readToRam
 
-movb    $24,%cl
+movb    $6,%cl
 movw    $0x2180,%ax
 call    readToRam
 
-movb    $25,%cl
+movb    $7,%cl
 movw    $0x21a0,%ax
 call    readToRam
 
@@ -155,8 +160,6 @@ dispMessage:
 readToRam:
    pushw %ax
    pushw %bx
-   pushw %cx
-   pushw %dx
    pushw %es
 
    movw $0,%bx
@@ -164,16 +167,10 @@ readToRam:
    
    movb $2,%ah
    movb $1,%al
-   movb $0,%ch
    
-   movb $0,%dh
-             
-   mov $0,%dl
    int $0x13
 
    popw %es
-   popw %dx
-   popw %cx
    popw %bx
    popw %ax
 
