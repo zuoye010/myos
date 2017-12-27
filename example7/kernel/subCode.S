@@ -26,6 +26,7 @@ inc         %esi
 loop        subR1
 movl        $167,%esi
 movl        $160,%edi
+int         $0xfe
 
 popl        %edi
 popl        %esi
@@ -33,6 +34,6 @@ popw        %dx
 popw        %cx
 popw        %ax
 
-iret
+retf
 
 .org 512

@@ -8,9 +8,9 @@ cld
 movb        $7,%ah
 movb        $0x20,%al
 movw        $80,%cx
-pushw       %di
+pushl       %edi
 rep         stosw
-popw        %di
+popl        %edi
 echo1:
 lodsb
 or          %al,%al
