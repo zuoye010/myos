@@ -24,7 +24,7 @@ tempCode:                                       #0x10
 
 buffer:                                         #0x18
             .word           0x45                #ldtLen-1=69
-            .word           0x1060
+            .word           0x1040
             .byte           0x0
             .byte           ATDW 
             .byte           0x0
