@@ -3,15 +3,15 @@
 .code32
 .section .text
 
-pushw       %ax
-pushw       %cx
-pushw       %dx
+pushl       %eax
+pushl       %ecx
+pushl       %edx
 pushl       %esi
 pushl       %edi
 
-movl        $179,%esi
-movw        %ax,%dx
-movw        $4,%cx
+movl        $175,%esi
+movl        %eax,%edx
+movl        $4,%ecx
 subR1:      
 rol         $4,%dx
 movb        %dl,%al
@@ -24,15 +24,15 @@ subR2:
 movb        %al,%ds:0(,%esi,1)
 inc         %esi
 loop        subR1
-movl        $167,%esi
-movl        $160,%edi
+movl        $164,%esi
+movl        $800,%edi
 int         $0xfe
 
 popl        %edi
 popl        %esi
-popw        %dx
-popw        %cx
-popw        %ax
+popl        %edx
+popl        %ecx
+popl        %eax
 
 lret
 

@@ -18,7 +18,7 @@ demoStack:                          #0x8+TIL
             .byte           0x0
             .byte           0x0
 demoData:                           #0x10+TIL
-            .word           184     #stackLen-1=184
+            .word           180     #stackLen-1=180
             .word           0x1140
             .byte           0x0
             .byte           ATDW
@@ -46,7 +46,7 @@ snpCode:                            #0x28+TIL
             .byte           D32
             .byte           0x0
 sseCode:                            #0x30+TIL
-            .word           0x11    #demoCodeLen-1
+            .word           0x19    #demoCodeLen-1
             .word           0x2100
             .byte           0x0
             .byte           ATCE

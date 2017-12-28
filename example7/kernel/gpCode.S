@@ -9,7 +9,7 @@ pushl       %eax
 pushl       %esi
 pushl       %edi
 
-movl        $115,%esi
+movl        $114,%esi
 movl        $0,%edi
 int         $0xfe
 movl        %ss:4(,%ebp,1),%eax

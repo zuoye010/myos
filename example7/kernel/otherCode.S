@@ -3,7 +3,7 @@
 .code32
 .section .text
 
-movl        $151,%esi
+movl        $148,%esi
 int         $0xfe
 movw        %ax,%es:0(,%edi,1)
 now:

@@ -9,21 +9,20 @@ mess4:      .ascii          "Overflow (Exception 4)"
             .byte           0x0         #23 -----27
 
 messb:      .ascii          "Segment Not Present (Exception 11)"
-            .byte           0x0         #36 -----50
+            .byte           0x0         #35 -----50
 
 messc:      .ascii          "Stack Segment (Exception 12)"
-            .byte           0x0         #29 -----86
+            .byte           0x0         #29 -----85
 
 messd:      .ascii          "General Protection (Exception 13)"
-            .byte           0x0         #36 -----115
+            .byte           0x0         #34 -----114
 
 messOther:  .ascii          "Other Exception"
-            .byte           0x0         #16 -----151
+            .byte           0x0         #16 -----148
 
-ErrMess:    .ascii          "Error Code="
-            .byte           0x0         #12 -----167
+ErrMess:    .ascii          "Error Code="#11 -----164
 
-ErrCode:    .long           0x0         #   -----179
+ErrCode:    .long           0x0         #   -----175
             .byte           'H'
             .byte           0x0
 .org 512

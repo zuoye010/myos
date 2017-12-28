@@ -75,7 +75,7 @@ echoCode:                               #0x50
             .byte           D32
             .byte           0x0
 subCode:                                #0x58
-            .word           0x42        #subCodeLen-1
+            .word           0x3c        #subCodeLen-1
             .word           0x20c0
             .byte           0x0
             .byte           ATCE

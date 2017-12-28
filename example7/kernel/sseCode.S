@@ -3,11 +3,13 @@
 .code32
 .section .text
 
-movl        $86,%esi
+movl        $85,%esi
 movl        $0,%edi
 int         $0xfe
 popl        %eax
-addl        $4,%eax
+CALL32      0x58,0x0
+popl        %eax
+addl        $9,%eax
 pushl       %eax
 
 iret
