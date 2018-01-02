@@ -26,7 +26,7 @@ demoLdt:
             .byte           0x0
             .byte           0x0
 demoTss:
-            .word           0x69    #106-1=105=0x69
+            .word           0x68    #105-1=104=0x68
             .word           0x10c0
             .byte           0x0
             .byte           AT386TSS

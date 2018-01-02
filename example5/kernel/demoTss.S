@@ -28,5 +28,6 @@
         .long       0x18            #ldt
         .word       0x0             #trace
         .word       0x68            #ioMap
-        .word       0xffff          #ioMap end
+
+        .byte       0xff            #ioMap end
 .org 512

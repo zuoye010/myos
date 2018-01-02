@@ -61,7 +61,7 @@ gKeyLdt:                                #0x40
             .byte           0x0
             .byte           0x0
 gKeyTss:                                #0x48
-            .word           0x69        #gKeyTssLen-1
+            .word           0x68        #gKeyTssLen-1
             .word           0x10c0
             .byte           0x0
             .byte           AT386TSS

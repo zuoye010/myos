@@ -2,5 +2,21 @@
 
 .section .data
         .org        104
-        .byte       0xff          #ioMap end
+
+.rept   8
+        .byte       0xff
+.endr
+
+        .byte       0xfb
+
+.rept   3
+        .byte       0xff
+.endr
+
+        .byte       0xfd
+
+        .byte       0x0
+
+        .byte       0xff
+
 .org 512

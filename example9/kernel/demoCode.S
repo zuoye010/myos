@@ -3,55 +3,44 @@
 .code16
 .section .text
 
-movw        $0x28,%ax
-lldt        %ax
-movw        $(0x8+TIL),%ax 
-movw        %ax,%ss
-movl        $0x400,%esp
-movw        $(0x0+TIL),%ax
-movw        %ax,%gs
-movl        $0,%edi
-movw        $0x28,%gs:96(,%edi,1)
-movw        $0x30,%ax
-ltr         %ax
-movw        $(0x10+TIL),%ax         #demoDataSel
+movw        $0x48,%ax
 movw        %ax,%ds
-movw        $0x10,%ax               #videoBufSel
-movw        %ax,%es
-movw        $0x38,%ax               #bufferSel
+movl        $0,%ebx
+
+movw        $0x58,%ds:80(,%ebx,1)       #ss
+movl        $0x400,%ds:56(,%ebx,1)      #esp
+movw        $0x60,%ds:76(,%ebx,1)       #cs
+movl        $0x00,%ds:32(,%ebx,1)       #offset of testBegin
+movl        $IOPL1,%ds:36(,%ebx,1)      #eflag
+CALL32      0xa8,0 
+
+movw        $0x68,%ds:80(,%ebx,1)       #ss
+movl        $0x400,%ds:56(,%ebx,1)      #esp
+movw        $0x70,%ds:76(,%ebx,1)       #cs
+movl        $0x00,%ds:32(,%ebx,1)       #offset of testBegin
+movl        $IOPL1,%ds:36(,%ebx,1)      #eflag
+CALL32      0xa8,0 
+
+movw        $0x38,%ax
 movw        %ax,%fs
-movw        %ax,%gs
-int         $0xff
-movl        $0,%edi
-movb        %fs:0(,%edi,1),%al
-cmpb        $0x30,%al                #cmp with '0'
-jnz         demo4
-movw        $2000,%ax
-movb        $2,%cl
-div         %cl
-jmp         over
-demo4:
-cmpb        $0x34,%al                #cmp with '4'
-jnz         demo11
-movb        $100,%al
-add         $50,%al
-into
-jmp         over
-demo11:     
-cmpb        $0x42,%al                #cmp with 'B'
-jnz         demo12
-movw        $(0x40+TIL),%ax
-movw        %ax,%gs
-jmp         over
-demo12:
-cmpb        $0x43,%al
-jnz         demo13
-movl        %esp,%ebp
-movb        %ss:0(,%ebp,1),%al
-jmp         over
-demo13:
-movw        $0x30,%ax
-movw        %ax,%gs
-over:
-Jump16      0x18,0x5
+movw        $AT386TSS,%fs:0x55(,%ebx,1)
+
+movw        $0x78,%ds:80(,%ebx,1)       #ss
+movl        $0x400,%ds:56(,%ebx,1)      #esp
+movw        $0x80,%ds:76(,%ebx,1)       #cs
+movl        $0x00,%ds:32(,%ebx,1)       #offset of testBegin
+movl        $IOPL2,%ds:36(,%ebx,1)      #eflag
+CALL32      0xa8,0 
+
+movw        $0x38,%ax
+movw        %ax,%fs
+movw        $AT386TSS,%fs:0x55(,%ebx,1)
+
+movw        $0x78,%ds:80(,%ebx,1)       #ss
+movl        $0x400,%ds:56(,%ebx,1)      #esp
+movw        $0x80,%ds:76(,%ebx,1)       #cs
+movl        $0x00,%ds:32(,%ebx,1)       #offset of testBegin
+movl        $IOPL3,%ds:36(,%ebx,1)      #eflag
+
+JUMP32      0x30,0                      #?
 .org 512

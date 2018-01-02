@@ -19,15 +19,15 @@ videoBuf:                               #0x10
             .byte           0x0
             .byte           0x0
 demoTss:                                #0x18
-            .word           0x00        #demoTssLen-1=0x69
+            .word           104         #demoTssLen-1=104
             .word           0x1080      
             .byte           0x0
             .byte           AT386TSS
             .byte           0x0
             .byte           0x0
 demoStack:                              #0x20
-            .word           0xffff
-            .word           0x0         #?
+            .word           0x400 
+            .word           0x9900      #?
             .byte           0x0
             .byte           ATDW
             .byte           D32
@@ -37,7 +37,7 @@ demoCode:                               #0x28
             .word           0x2080      
             .byte           0x0
             .byte           ATCE
-            .byte           0x0
+            .byte           D32
             .byte           0x0
 tempCode:                               #0x30
             .word           0xffff    
@@ -54,38 +54,100 @@ toGdt:                                  #0x38
             .byte           0x0
             .byte           0x0
 toGpTss:                                #0x40
-            .word           0x00        #gpTssLen-1
+            .word           104         #gpTssLen-1
             .word           0x10a0      
             .byte           0x0
             .byte           ATDW 
             .byte           0x0
             .byte           0x0
 toTestTss:                              #0x48
-            .word           0x00        #testTssLen-1
+            .word           118         #testTssLen-1
             .word           0x10c0      
             .byte           0x0
             .byte           ATDW 
             .byte           0x0
             .byte           0x0
 testTss:                                #0x50
-            .word           0x00        #testTssLen-1
+            .word           118         #testTssLen-1
             .word           0x10c0
             .byte           0x0
             .byte           AT386TSS
             .byte           0x0
             .byte           0x0
-toTestTss:                              #0x48
-            .word           0x00        #testTssLen-1
-            .word           0x10c0      
+test1Stack:                             #0x58
+            .word           0x400       #testTssLen-1
+            .word           0x9800
             .byte           0x0
-            .byte           ATDW 
+            .byte           ATDW+DPL1
+            .byte           D32
+            .byte           0x0
+test1Code:                              #0x60
+            .word           0x0
+            .word           0x20c0
+            .byte           0x0
+            .byte           ATCE+DPL1
+            .byte           D32
+            .byte           0x0
+test2Stack:                             #0x68
+            .word           0x400       #testTssLen-1
+            .word           0x9840
+            .byte           0x0
+            .byte           ATDW+DPL2
+            .byte           D32
+            .byte           0x0
+test2Code:                              #0x70
+            .word           0x0
+            .word           0x20c0
+            .byte           0x0
+            .byte           ATCE+DPL2
+            .byte           D32
+            .byte           0x0
+test3Stack:                             #0x78
+            .word           0x400       #testTssLen-1
+            .word           0x9880
+            .byte           0x0
+            .byte           ATDW+DPL3
+            .byte           D32
+            .byte           0x0
+test3Code:                              #0x80
+            .word           0x0
+            .word           0x20c0
+            .byte           0x0
+            .byte           ATCE+DPL3
+            .byte           D32
+            .byte           0x0
+gpTss:                                  #0x88
+            .word           104         #gpTssLen-1
+            .word           0x10a0
+            .byte           0x0
+            .byte           AT386TSS
             .byte           0x0
             .byte           0x0
-other:                                  #0x60
-            .word           0x12        #otherCodeLen-1
-            .word           0x2180
+gpStack:                                #0x90
+            .word           0x200       #testTssLen-1
+            .word           0x9a00
+            .byte           0x0
+            .byte           ATDW
+            .byte           D32
+            .byte           0x0
+gpCode:                                 #0x98
+            .word           0x0
+            .word           0x20a0
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
+errCode:                                #0xa0
+            .word           0x0
+            .word           0x20e0
+            .byte           0x0
+            .byte           ATCCOR
+            .byte           D32
+            .byte           0x0
+testTask:                               #0xa8
+            .word           0x0
+            .word           0x50
+            .byte           0x0
+            .byte           ATTaskGate
+            .word           0x0
 .org 512
