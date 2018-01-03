@@ -3,25 +3,53 @@
 .code32
 .section .text
 
-pushl       %ebp
-movl        %esp,%ebp
-pushl       %eax
-pushl       %esi
-pushl       %edi
+gpBegin:
+xor         %edi,%edi
+movl        $0,%ebx
+movl        %ds:76(,%ebx,1),%edx        #testTss.cs to edx
+call        echoEdx
 
-movl        $114,%esi
-movl        $0,%edi
-int         $0xfe
-movl        %ss:4(,%ebp,1),%eax
-CALL32      0x58,0x0
+movw        $0x17,%dx
+shlw        $8,%dx
+addw        $0x4a,%dx                   # 0x4a == ':'
+movw        %dx,%ax
+stosw
+movl        %ds:32(,%ebx,1),%edx        #testTss.eip to edx
+call        echoEdx
 
-popl        %edi
-popl        %esi
-popl        %eax
-addw        $2,%ss:8(,%ebp,1)
-popl        %ebp
-addl        $4,%esp
+movl        $0x1234567,%ecx             #delay some times
+conShow:
+loop        conShow
+
+movl        $0,%ebx
+movw        $0x18,%ax                   #demoTssSel
+movw        %ax,%fs:0(,%ebx,1)
+add         $4,%esp
 
 iret
 
+jmp         gpBegin
+
+echoEdx:
+movb        $0x17,%ah
+movl        $8,%ecx
+echoEdx1:
+rol         $4,%edx
+movb        %dl,%al
+call        hToAscii
+stosw
+loop        echoEdx1
+ret
+
+hToAscii:           
+pushw       %bx
+andb        $0x0f,%al
+movb        %al,%bl
+addb        $0x30,%al
+cmpb        $0x9,%bl
+popw        %bx
+jb          Next
+addb        $0x07,%al
+Next:
+ret
 .org 512

@@ -3,7 +3,7 @@
 .code16
 .section .text
 
-movw        $0x1040,%ax         #gdtSeg
+movw        $0x1040,%ax         #dataSeg
 movw        %ax,%ds
 
 cld
@@ -21,11 +21,11 @@ sidt        %ds:12(,%edi,1)
 cli
 lidt        %ds:6(,%edi,1)
 
-movl        %cr0,%eax
+movl        %cr0,%eax           #to protect mode
 orl         $1,%eax
 movl        %eax,%cr0
 
-Jump16      0x30,0x0        #to tempCode rpl0   16
+Jump16      0x30,0x0            #to tempCode rpl0   16
 
 Real:
 movw        $0x1040,%ax
@@ -39,11 +39,11 @@ inf:jmp inf
 
 initGdt:
 pushw       %ds
-movw        $0x1060,%ax
+movw        $0x1060,%ax          #gdtSeg
 movw        %ax,%ds
-movw        $18,%cx              #gdtNum=6
+movw        $18,%cx              #gdtNum
 movl        $0,%esi
-movl        $24,%eax
+movl        $24,%eax             #offset
 initG:
 movl        $0,%ebx
 movw        %ds:desc.baseL(%eax,%esi,1),%bx
@@ -58,7 +58,7 @@ addl        $8,%eax
 loop        initG
 popw        %ds
 
-movw        $0x1060,%ax
+movw        $0x1060,%ax         #gdtSeg
 movw        $16,%bx
 mul         %bx
 movl        $0,%edi
@@ -69,7 +69,7 @@ ret
 
 initIdt:
 initI:
-movw        $0x1400,%ax
+movw        $0x1400,%ax         #idtSeg
 movw        $16,%bx
 mul         %bx
 movl        $0,%edi

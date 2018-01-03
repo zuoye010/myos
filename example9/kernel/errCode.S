@@ -3,12 +3,22 @@
 .code32
 .section .text
 
-movl        $148,%esi
-int         $0xfe
-movw        %ax,%es:0(,%edi,1)
-now:
-jmp         now
+errMess:        .ascii          "Error!!!"
 
-iret
+cld
+movw            $0xa0,%ax           #errCodeSel
+movw            %ax,%ds
+movl            $0,%esi             #offset of errMess
+movw            $0x10,%ax           #videoBufSel
+movw            %ax,%es
+movl            $1992,%edi
+movl            $8,%ecx             #len of errMess
+movb            $0x4e,%ah
+err1:
+lodsb
+stosw
+loop            err1
+conErr:
+loop            conErr
 
 .org 512

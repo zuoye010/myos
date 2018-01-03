@@ -6,7 +6,7 @@ idt:
 
 .rept   13
             .word           0x8
-            .word           0xa8
+            .word           0xa0
             .byte           0x0
             .byte           AT386TGate
             .word           0x0
@@ -21,7 +21,7 @@ gpGate:
 
 .rept   242
             .word           0x8
-            .word           0xa8
+            .word           0xa0
             .byte           0x0
             .byte           AT386TGate
             .word           0x0

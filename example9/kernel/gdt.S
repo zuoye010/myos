@@ -27,13 +27,13 @@ demoTss:                                #0x18
             .byte           0x0
 demoStack:                              #0x20
             .word           0x400 
-            .word           0x9900      #?
+            .word           0x9800      #?
             .byte           0x0
             .byte           ATDW
             .byte           D32
             .byte           0x0
 demoCode:                               #0x28
-            .word           0x00        #demoCodeLen-1
+            .word           0x12b       #demoCodeLen-1
             .word           0x2080      
             .byte           0x0
             .byte           ATCE
@@ -47,7 +47,7 @@ tempCode:                               #0x30
             .byte           0x0
             .byte           0x0
 toGdt:                                  #0x38
-            .word           0x00        #gdtLen-1
+            .word           0xaf        #gdtLen-1
             .word           0x1060      
             .byte           0x0
             .byte           ATDW 
@@ -76,13 +76,13 @@ testTss:                                #0x50
             .byte           0x0
 test1Stack:                             #0x58
             .word           0x400       #testTssLen-1
-            .word           0x9800
+            .word           0x9940
             .byte           0x0
             .byte           ATDW+DPL1
             .byte           D32
             .byte           0x0
 test1Code:                              #0x60
-            .word           0x0
+            .word           0x27
             .word           0x20c0
             .byte           0x0
             .byte           ATCE+DPL1
@@ -90,13 +90,13 @@ test1Code:                              #0x60
             .byte           0x0
 test2Stack:                             #0x68
             .word           0x400       #testTssLen-1
-            .word           0x9840
+            .word           0x9980
             .byte           0x0
             .byte           ATDW+DPL2
             .byte           D32
             .byte           0x0
 test2Code:                              #0x70
-            .word           0x0
+            .word           0x27
             .word           0x20c0
             .byte           0x0
             .byte           ATCE+DPL2
@@ -104,13 +104,13 @@ test2Code:                              #0x70
             .byte           0x0
 test3Stack:                             #0x78
             .word           0x400       #testTssLen-1
-            .word           0x9880
+            .word           0x99c0
             .byte           0x0
             .byte           ATDW+DPL3
             .byte           D32
             .byte           0x0
 test3Code:                              #0x80
-            .word           0x0
+            .word           0x27
             .word           0x20c0
             .byte           0x0
             .byte           ATCE+DPL3
@@ -131,14 +131,14 @@ gpStack:                                #0x90
             .byte           D32
             .byte           0x0
 gpCode:                                 #0x98
-            .word           0x0
+            .word           0x76
             .word           0x20a0
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 errCode:                                #0xa0
-            .word           0x0
+            .word           0x2c
             .word           0x20e0
             .byte           0x0
             .byte           ATCCOR
