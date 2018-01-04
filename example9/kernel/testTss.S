@@ -9,13 +9,13 @@
         .byte       0xff
 .endr
 
-        .byte       0xfb
-
+        .byte       0xfb            # address 0x43 is 0
+                                    # address 0x42 is 1
 .rept   3
         .byte       0xff
 .endr
 
-        .byte       0xfd
+        .byte       0xfd            #address 0x61 is 0
 
         .byte       0x0
 

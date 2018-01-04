@@ -11,7 +11,7 @@ call        echoEdx
 
 movw        $0x17,%dx
 shlw        $8,%dx
-addw        $0x4a,%dx                   # 0x4a == ':'
+addw        $0x3a,%dx                   # 0x4a == ':'
 movw        %dx,%ax
 stosw
 movl        %ds:32(,%ebx,1),%edx        #testTss.eip to edx
