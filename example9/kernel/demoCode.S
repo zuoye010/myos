@@ -7,6 +7,8 @@ movw        $0x48,%ax                           #toTestTssSel
 movw        %ax,%ds
 movl        $0,%ebx
 
+movl        $(104),%ds:102(,%ebx,1)        #ss test1Stack
+
 movl        $(0x58+RPL1),%ds:80(,%ebx,1)        #ss test1Stack
 movl        $0x400,%ds:56(,%ebx,1)              #esp
 movl        $(0x60+RPL1),%ds:76(,%ebx,1)        #cs

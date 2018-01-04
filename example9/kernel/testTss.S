@@ -9,8 +9,8 @@
         .byte       0xff
 .endr
 
-        .byte       0xfb            # address 0x43 is 0
-                                    # address 0x42 is 1
+        .byte       0xfb            # address 0x43 is 1
+                                    # address 0x42 is 0
 .rept   3
         .byte       0xff
 .endr

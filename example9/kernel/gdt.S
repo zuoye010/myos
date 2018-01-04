@@ -33,7 +33,7 @@ demoStack:                              #0x20
             .byte           D32
             .byte           0x0
 demoCode:                               #0x28
-            .word           0x12b       #demoCodeLen-1
+            .word           0x136       #demoCodeLen-1
             .word           0x2080      
             .byte           0x0
             .byte           ATCE
