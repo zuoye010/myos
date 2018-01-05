@@ -10,10 +10,10 @@ movw        $0x38,%ax
 movw        %ax,%es
 movl        $0,%esi
 movl        %esi,%edi
-movl        $0x0,%ecx           #?
+movl        $0x1c,%ecx           #?
 rep         movsb
 
-Jump16      0x48,0        #to demoCode
+Jump16      0x48,0x0            #to demoCode
 
 ToReal:
 #movw        $0x8,%ax
@@ -23,6 +23,6 @@ movw        %ax,%es
 movl        %cr0,%eax
 andb        $0xFE,%al
 movl        %eax,%cr0
-Jump16      0x2040,0x0          #?
+Jump16      0x2040,0x30         #?
 
 .org 512

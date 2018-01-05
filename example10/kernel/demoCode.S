@@ -8,7 +8,7 @@ movw        %ax,%es
 xor         %edi,%edi
 movl        $1024,%ecx
 xor         %eax,%eax
-rep         stosd
+rep         stosl
 
 xor         %edi,%edi
 
@@ -33,9 +33,9 @@ movl        $1024,%ecx
 xor         %eax,%eax
 movl        $USU,%eax
 addl        $RWW,%eax
-addl        $PL
+addl        $PL,%eax
 demo1:
-rep         stosd
+            stosl
 addl        $0x1000,%eax
 loop        demo1
 
@@ -44,26 +44,26 @@ shrl        $12,%edi
 shll        $2,%edi
 movl        $0x301000,%eax
 addl        $USS,%eax
-addl        %RWW,%eax
-addl        %PL,%eax
-movl        %edi,%es:0(,%edi,1)
+addl        $RWW,%eax
+addl        $PL,%eax
+movl        %eax,%es:0(,%edi,1)
 
 movl        $0xf0000,%edi
 shrl        $12,%edi
 shll        $2,%edi
 movl        $0xb8000,%eax
 addl        $USU,%eax
-addl        %RWR,%eax
-addl        %PL,%eax
-movl        %edi,%es:0(,%edi,1)
+addl        $RWR,%eax
+addl        $PL,%eax
+movl        %eax,%es:0(,%edi,1)
 
-movw        $0x20,%ax                   #init pt0
+movw        $0x20,%ax                   #init pt1
 movw        %ax,%es
 xor         %edi,%edi
 movl        $1024,%ecx
 movl        $0x400000,%eax
 demo2:
-rep         stosd
+            stosl
 addl        $0x1000,%eax
 loop        demo2
 
@@ -73,9 +73,9 @@ andl        $0x3ff,%edi
 shll        $2,%edi
 movl        $0x303000,%eax
 addl        $USU,%eax
-addl        %RWR,%eax
-addl        %PL,%eax
-movl        %edi,%es:0(,%edi,1)
+addl        $RWR,%eax
+addl        $PL,%eax
+movl        %eax,%es:0(,%edi,1)
 
 movl        $0x200000,%eax
 movl        %eax,%cr3
@@ -95,7 +95,8 @@ movl        %cr0,%eax
 andl        $0x7fffffff,%eax
 movl        %eax,%cr0
 jmp         pageD
-page:
-movw        
+pageD:
+movw        $0x8,%ax
+Jump16      0x40,0x21               #?
 
 .org 512

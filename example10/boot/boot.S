@@ -25,31 +25,19 @@ movw    $0x1060,%ax
 call    readToRam
 
 movb    $4,%cl
-movw    $0x1080,%ax
-call    readToRam
-
-movb    $5,%cl
-movw    $0x10a0,%ax
-call    readToRam
-
-movb    $6,%cl
 movw    $0x2040,%ax
 call    readToRam
 
-movb    $7,%cl
+movb    $5,%cl
 movw    $0x2060,%ax
 call    readToRam
 
-movb    $8,%cl
+movb    $6,%cl
 movw    $0x2080,%ax
 call    readToRam
 
-movb    $9,%cl
+movb    $7,%cl
 movw    $0x20a0,%ax
-call    readToRam
-
-movb    $10,%cl
-movw    $0x20c0,%ax
 call    readToRam
 
 movw    $0x1b5, %ax
