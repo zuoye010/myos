@@ -3,7 +3,7 @@
 .section .data
 
 vgdtr:
-vgdtrLimit:     .word           95          #   ---0
+vgdtrLimit:     .word           103         #   ---0
 vgdtrBaseL:     .word           0x0
 vgdtrBaseH:     .word           0x0
 
