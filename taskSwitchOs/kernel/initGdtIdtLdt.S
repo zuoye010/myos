@@ -24,6 +24,8 @@ movl        $0,%esi
 movl        $0,%eax
 call        initMLdt
 
+EnableA20
+
 lgdt        %ds:0(,%edi,1)
 
 cli

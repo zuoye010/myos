@@ -8,7 +8,7 @@
         .long       0x0         #stack1Ss       #16
         .long       0x0         #stack2Sp       #20
         .long       0x0         #stack2Ss       #24
-        .long       0x0         #cr3            #28
+        .long       0x200000    #cr3            #28
         .long       0x0         #eip            #32
         .long       0x0         #eflags         #36
         .long       0x0         #eax            #40

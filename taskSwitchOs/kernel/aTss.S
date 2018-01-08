@@ -8,7 +8,7 @@
         .long       0x0         #stack1Ss       #16
         .long       0x0         #stack2Sp       #20
         .long       0x0         #stack2Ss       #24
-        .long       0x0         #cr3            #28
+        .long       0x200000    #cr3            #28
         .long       0x0         #eip            #32
         .long       0x0         #eflags         #36
         .long       0x0         #eax            #40
@@ -19,13 +19,13 @@
         .long       0x0         #ebp            #60
         .long       0x0         #esi            #64
         .long       0x0         #edi            #68
-        .long       0x0         #es             #72
+        .long       0x18        #es             #72
         .long       (0x0+RPL3+TIL)   #cs             #76
         .long       (0x8+RPL3+TIL)   #ss             #80
         .long       (0xb8+RPL3)  #ds             #84
         .long       0x0         #fs             #88
         .long       0x0         #gs             #92
-        .long       0x0         #ldt            #96
+        .long       0x68        #ldt            #96
         .word       0x0         #trace          #100
         .word       104         #ioMap          #102
 

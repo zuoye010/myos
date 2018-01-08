@@ -5,7 +5,7 @@
 
 cld
 
-movw        $0x08,%ax               #init pdt
+movw        $0x08,%ax                   #init pdt
 movw        %ax,%es
 xor         %edi,%edi
 movl        $1024,%ecx
@@ -44,17 +44,6 @@ movl        %eax,%cr0
 jmp         pageE
 pageE:
 
-
-Jump16      0x48,0x0            #to demoCode
-
-ToReal:
-#movw        $0x8,%ax
-movw        %ax,%ds
-movw        %ax,%es
-
-movl        %cr0,%eax
-andb        $0xFE,%al
-movl        %eax,%cr0
-Jump16      0x2040,0x30         #?
+CALL32      0x38,0x0                #to demoCode
 
 .org 512

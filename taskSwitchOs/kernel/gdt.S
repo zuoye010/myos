@@ -19,14 +19,14 @@ pt0:                                        #0x10
             .byte           0x0
             .byte           0x0
 data:                                       #0x18
-            .word           0x0             #?
+            .word           15              #?
             .word           0x1040
             .byte           0x0
             .byte           ATDW
             .byte           0x0
             .byte           0x0
 toGdt:                                      #0x20
-            .word           0x00            #gdtLen-1
+            .word           191             #gdtLen-1
             .word           0x1060      
             .byte           0x0
             .byte           ATDW 
@@ -89,49 +89,49 @@ toBTss:                                     #0x60
             .byte           0x0
             .byte           0x0
 aLdt:                                       #0x68
-            .word           0x00            #aLdtLen-1
+            .word           0xf             #aLdtLen-1
             .word           0x1100      
             .byte           0x0
             .byte           ATLDT
             .byte           0x0
             .byte           0x0
 toALdt:                                     #0x70
-            .word           0x0             #aLdtLen-1
+            .word           0xf             #aLdtLen-1
             .word           0x1100      
             .byte           0x0
             .byte           ATDW 
             .byte           0x0
             .byte           0x0
 bLdt:                                       #0x78
-            .word           0x00            #bLdtLen-1
+            .word           0xf             #bLdtLen-1
             .word           0x1120      
             .byte           0x0
             .byte           ATLDT
             .byte           0x0
             .byte           0x0
 toBLdt:                                     #0x80
-            .word           0x0             #bLdtLen-1
+            .word           0xf             #bLdtLen-1
             .word           0x1120      
             .byte           0x0
             .byte           ATDW 
             .byte           0x0
             .byte           0x0
-tempCode:                                   #0x88
-            .word           0x0             #?
+initPageCode:                               #0x88
+            .word           0x6c            #?
             .word           0x2060
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 timeCode:                                   #0x90
-            .word           0x0             #?
+            .word           0x9             #?
             .word           0x2080
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 osCode:                                     #0x98
-            .word           0x0             #?
+            .word           0x34            #?
             .word           0x20a0
             .byte           0x0
             .byte           ATCE

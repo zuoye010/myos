@@ -14,7 +14,7 @@ idt:
 
 timeGate:
             .word           0x0
-            .word           0x30
+            .word           0x28
             .byte           0x0
             .byte           ATTaskGate
             .word           0x0

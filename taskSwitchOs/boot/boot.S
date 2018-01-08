@@ -5,7 +5,7 @@ movw    %ax,%ds
 movw    %ax,%es
 movw    $0x9800,%ax
 movw    %ax,%ss
-movw    $0x100,%sp
+movw    $0x200,%sp
 movl    $0,%edi
 
 movw    $0x1a0, %ax
@@ -16,12 +16,85 @@ popl    %eax
 movb    $0,%dh
 call    dispMessage
 
+movb    $0,%ch
 movb    $2,%cl
+movb    $0,%dh
+movb    $0,%dl
 movw    $0x1040,%ax
 call    readToRam
 
 movb    $3,%cl
+movw    $0x1060,%ax
+call    readToRam
+
+movb    $4,%cl
+movw    $0x1080,%ax
+call    readToRam
+
+movb    $5,%cl
+movw    $0x10a0,%ax
+call    readToRam
+
+movb    $6,%cl
+movw    $0x10c0,%ax
+call    readToRam
+
+movb    $7,%cl
+movw    $0x10e0,%ax
+call    readToRam
+
+movb    $8,%cl
+movw    $0x1100,%ax
+call    readToRam
+
+movb    $9,%cl
+movw    $0x1120,%ax
+call    readToRam
+
+movb    $10,%cl
+movw    $0x1400,%ax
+call    readToRam
+
+movb    $11,%cl
+movw    $0x1420,%ax
+call    readToRam
+
+movb    $12,%cl
+movw    $0x1440,%ax
+call    readToRam
+
+movb    $13,%cl
+movw    $0x1460,%ax
+call    readToRam
+
+movb    $14,%cl
 movw    $0x2040,%ax
+call    readToRam
+
+movb    $15,%cl
+movw    $0x2060,%ax
+call    readToRam
+
+movb    $16,%cl
+movw    $0x2080,%ax
+call    readToRam
+
+movb    $17,%cl
+movw    $0x20a0,%ax
+call    readToRam
+
+movb    $0,%ch
+movb    $18,%cl
+movw    $0x2100,%ax
+call    readToRam
+
+movb    $1,%cl
+movb    $1,%dh
+movw    $0x20c0,%ax
+call    readToRam
+
+movb    $2,%cl
+movw    $0x20e0,%ax
 call    readToRam
 
 movw    $0x1b5, %ax
@@ -67,8 +140,6 @@ dispMessage:
 readToRam:
    pushw %ax
    pushw %bx
-   pushw %cx
-   pushw %dx
    pushw %es
 
    movw $0,%bx
@@ -76,16 +147,10 @@ readToRam:
    
    movb $2,%ah
    movb $1,%al
-   movb $0,%ch
    
-   movb $0,%dh
-             
-   mov $0,%dl
    int $0x13
 
    popw %es
-   popw %dx
-   popw %cx
    popw %bx
    popw %ax
 
