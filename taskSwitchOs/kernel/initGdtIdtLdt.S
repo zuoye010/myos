@@ -35,15 +35,15 @@ movl        %cr0,%eax
 orl         $1,%eax
 movl        %eax,%cr0
 
-Jump16      0x88,0x0        #to tempCode rpl0   16
+Jump16      0x98,0x0        #to tempCode rpl0   16
 
 initGdt:
 pushw       %ds
 movw        $0x1060,%ax
 movw        %ax,%ds
-movw        $20,%cx              #gdtNum=6
+movw        $24,%cx              #gdtNum=6
 movl        $0,%esi
-movl        $24,%eax
+movl        $40,%eax
 initG:
 movl        $0,%ebx
 movw        %ds:desc.baseL(%eax,%esi,1),%bx

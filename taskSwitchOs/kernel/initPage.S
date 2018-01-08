@@ -5,7 +5,7 @@
 
 cld
 
-movw        $0x08,%ax                   #init pdt
+movw        $0x18,%ax                   #init pdt
 movw        %ax,%es
 xor         %edi,%edi
 movl        $1024,%ecx
@@ -21,7 +21,7 @@ addl        $PL,%ebx
 or          $0x201000,%ebx
 movl        %ebx,%es:0(,%edi,1)
 
-movw        $0x10,%ax                   #init pt0
+movw        $0x20,%ax                   #init pt0
 movw        %ax,%es
 xor         %edi,%edi
 movl        $1024,%ecx
@@ -44,6 +44,6 @@ movl        %eax,%cr0
 jmp         pageE
 pageE:
 
-CALL32      0x38,0x0                #to demoCode
+CALL32      0x48,0x0                #to demoCode
 
 .org 512
