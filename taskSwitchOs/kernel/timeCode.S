@@ -5,7 +5,11 @@
 
 timeBegin:
 cli 
-CALL32      0x38,0x0 
+movb        $0x20,%al
+outb        %al,$0x20
+xorl        %edi,%edi
+movl        $0x48,%ds:0(,%edi,1)
+iret
 jmp         timeBegin
 
 .org 512

@@ -3,6 +3,9 @@
 .code32
 .section .text
 
+movb        $0xFE,%al
+outb        %al,$0x21
+
 cld
 
 movw        $0x18,%ax                   #init pdt

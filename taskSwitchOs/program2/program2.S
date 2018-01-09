@@ -3,7 +3,7 @@
 .code32
 .section .text
 
-aBegin:
+bBegin:
 xorl    %edi,%edi
 xorl    %eax,%eax
 xorl    %ecx,%ecx
@@ -14,7 +14,7 @@ movw    $3,%cx
 showMess:
 movw    %es:13(,%edi,1),%ax
 movw    %bx,%ds:0(%eax,%edi,1)
-cmpw    3998,%ax
+cmpw    $3998,%ax
 jnz     increase1
 movw    $0,%ax
 jmp     finishSetA
@@ -24,6 +24,7 @@ finishSetA:
 movw    %ax,%es:13(,%edi,1)
 loop    showMess
 
-jmp     aBegin
+jmp     bBegin
+jmp     bBegin
 
 .org 512

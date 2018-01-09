@@ -13,10 +13,10 @@ normal:                                     #0x08
             .byte           0x0
 videoBuffer:                                #0x10
             .word           3999            #videoBufferLen-1
-            .word           0x00  
-            .byte           0xb8
-            .byte           ATDW+DPL3
-            .byte           D32
+            .word           0x8000
+            .byte           0xb
+            .byte           ATDW
+            .byte           0x0
             .byte           0x0
 pdt:                                        #0x18
             .word           0xfff
@@ -33,7 +33,7 @@ pt0:                                        #0x20
             .byte           0x0
             .byte           0x0
 data:                                       #0x28
-            .word           15              #?
+            .word           14              #?
             .word           0x1040
             .byte           0x0
             .byte           ATDW
@@ -131,28 +131,28 @@ toBLdt:                                     #0x90
             .byte           0x0
             .byte           0x0
 initPageCode:                               #0x98
-            .word           0x6c            #?
+            .word           0x70            #?
             .word           0x2060
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 timeCode:                                   #0xa0
-            .word           0x9             #?
+            .word           0x14            #?
             .word           0x2080
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 osCode:                                     #0xa8
-            .word           0x34            #?
+            .word           0x8e            #?
             .word           0x20a0
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 otherCode:                                  #0xb0
-            .word           0x0             #?
+            .word           0x15            #?
             .word           0x2100
             .byte           0x0
             .byte           ATCE
@@ -173,7 +173,7 @@ osStack:                                    #0xc0
             .byte           D32
             .byte           0x0
 aCode:                                      #0xc8
-            .word           0x3a            #aCodeLen-1
+            .word           0x39            #aCodeLen-1
             .word           0x20c0
             .byte           0x0
             .byte           ATCE
@@ -187,7 +187,7 @@ aStack:                                     #0xd0
             .byte           D32
             .byte           0x0
 bCode:                                      #0xd8
-            .word           0x3a            #aCodeLen-1
+            .word           0x39            #aCodeLen-1
             .word           0x20e0
             .byte           0x0
             .byte           ATCE

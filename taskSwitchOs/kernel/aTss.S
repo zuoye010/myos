@@ -19,13 +19,13 @@
         .long       0x0         #ebp            #60
         .long       0x0         #esi            #64
         .long       0x0         #edi            #68
-        .long       0x18        #es             #72
-        .long       (0x0+RPL3+TIL)   #cs             #76
-        .long       (0x8+RPL3+TIL)   #ss             #80
-        .long       (0xb8+RPL3)  #ds             #84
-        .long       0x0         #fs             #88
-        .long       0x0         #gs             #92
-        .long       0x68        #ldt            #96
+        .long       0x28        #es             #72
+        .long       0xc8        #cs             #76
+        .long       0xd0        #ss             #80
+        .long       0x10        #ds             #84
+        .long       0x08        #fs             #88
+        .long       0x08        #gs             #92
+        .long       0x00        #ldt            #96
         .word       0x0         #trace          #100
         .word       104         #ioMap          #102
 
