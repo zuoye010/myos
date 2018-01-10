@@ -4,7 +4,7 @@
 
 ldt:
 aCode:                                      #0x0+TIL
-            .word           0x39            #aCodeLen-1
+            .word           0x51            #aCodeLen-1
             .word           0x20c0
             .byte           0x0
             .byte           ATCE+DPL3

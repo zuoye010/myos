@@ -40,7 +40,7 @@ data:                                       #0x28
             .byte           0x0
             .byte           0x0
 toGdt:                                      #0x30
-            .word           231             #gdtLen-1
+            .word           199             #gdtLen-1
             .word           0x1060      
             .byte           0x0
             .byte           ATDW 
@@ -170,34 +170,6 @@ osStack:                                    #0xc0
             .word           0x9800
             .byte           0x0
             .byte           ATDW
-            .byte           D32
-            .byte           0x0
-aCode:                                      #0xc8
-            .word           0x39            #aCodeLen-1
-            .word           0x20c0
-            .byte           0x0
-            .byte           ATCE+DPL3
-            .byte           D32
-            .byte           0x0
-aStack:                                     #0xd0
-            .word           0x200           #aStackLen-1
-            .word           0x9a80
-            .byte           0x0
-            .byte           ATDW+DPL3
-            .byte           D32
-            .byte           0x0
-bCode:                                      #0xd8
-            .word           0x39            #aCodeLen-1
-            .word           0x20e0
-            .byte           0x0
-            .byte           ATCE+DPL3
-            .byte           D32
-            .byte           0x0
-bStack:                                     #0xe0
-            .word           0x200           #aStackLen-1
-            .word           0x9b80
-            .byte           0x0
-            .byte           ATDW+DPL3
             .byte           D32
             .byte           0x0
 .org 512

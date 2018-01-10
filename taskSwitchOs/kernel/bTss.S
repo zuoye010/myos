@@ -19,10 +19,10 @@
         .long       0x0         #ebp            #60
         .long       0x0         #esi            #64
         .long       0x0         #edi            #68
-        .long       (0x28+RPL3)        #es             #72
+        .long       (0x10+RPL3)        #es             #72
         .long       (0x0+RPL3+TIL)        #cs             #76
         .long       (0x8+RPL3+TIL)        #ss             #80
-        .long       (0x10+RPL3)        #ds             #84
+        .long       (0x28+RPL3)        #ds             #84
         .long       (0x08+RPL3)        #fs             #88
         .long       (0x08+RPL3)        #gs             #92
         .long       0x88        #ldt            #96

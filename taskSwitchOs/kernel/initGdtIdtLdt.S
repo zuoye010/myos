@@ -41,7 +41,7 @@ initGdt:
 pushw       %ds
 movw        $0x1060,%ax
 movw        %ax,%ds
-movw        $24,%cx              #gdtNum=6
+movw        $20,%cx              #gdtNum=6
 movl        $0,%esi
 movl        $40,%eax
 initG:

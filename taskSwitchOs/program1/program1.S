@@ -12,19 +12,35 @@ movb    $0x41,%bl
 movw    $3,%cx
 
 showMess:
-movw    %es:13(,%edi,1),%ax
-movw    %bx,%ds:0(%eax,%edi,1)
+movw    %ds:13(,%edi,1),%ax
+movw    %bx,%es:0(%eax,%edi,1)
 cmpw    $3998,%ax
 jnz     increase1
 movw    $0,%ax
+call    clearAllScreen
 jmp     finishSetA
 increase1:
 addw    $2,%ax
 finishSetA:
-movw    %ax,%es:13(,%edi,1)
+movw    %ax,%ds:13(,%edi,1)
 loop    showMess
 
 jmp     aBegin
 jmp     aBegin
+
+clearAllScreen:
+pushl   %eax
+pushl   %edi
+pushl   %ecx
+movb    $0x0,%ah
+movb    $0x20,%al
+movl    $1999,%ecx
+clearScreen:
+stosw
+loop    clearScreen
+popl    %ecx
+popl    %edi
+popl    %eax
+ret
 
 .org 512
