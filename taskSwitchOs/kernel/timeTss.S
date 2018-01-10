@@ -19,7 +19,7 @@
         .long       0x0         #ebp            #60
         .long       0x0         #esi            #64
         .long       0x0         #edi            #68
-        .long       0x8         #es             #72
+        .long       0x30        #es             #72
         .long       0xa0        #cs             #76
         .long       0xb8        #ss             #80
         .long       0x40        #ds             #84

@@ -138,14 +138,14 @@ initPageCode:                               #0x98
             .byte           D32
             .byte           0x0
 timeCode:                                   #0xa0
-            .word           0x14            #?
+            .word           0x21            #?
             .word           0x2080
             .byte           0x0
             .byte           ATCE
             .byte           D32
             .byte           0x0
 osCode:                                     #0xa8
-            .word           0x8e            #?
+            .word           0x7f            #?
             .word           0x20a0
             .byte           0x0
             .byte           ATCE

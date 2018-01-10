@@ -7,7 +7,7 @@ aBegin:
 xorl    %edi,%edi
 xorl    %eax,%eax
 xorl    %ecx,%ecx
-movb    $0x17,%bh
+movb    $0x47,%bh
 movb    $0x41,%bl
 movw    $3,%cx
 
