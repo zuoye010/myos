@@ -8,14 +8,14 @@ normal:                                     #0x08
             .word           0xffff
             .word           0x0
             .byte           0x0
-            .byte           ATDW
+            .byte           ATDW+DPL3
             .byte           0x0
             .byte           0x0
 videoBuffer:                                #0x10
             .word           3999            #videoBufferLen-1
             .word           0x8000
             .byte           0xb
-            .byte           ATDW
+            .byte           ATDW+DPL3
             .byte           0x0
             .byte           0x0
 pdt:                                        #0x18
@@ -36,7 +36,7 @@ data:                                       #0x28
             .word           14              #?
             .word           0x1040
             .byte           0x0
-            .byte           ATDW
+            .byte           ATDW+DPL3
             .byte           0x0
             .byte           0x0
 toGdt:                                      #0x30
@@ -176,28 +176,28 @@ aCode:                                      #0xc8
             .word           0x39            #aCodeLen-1
             .word           0x20c0
             .byte           0x0
-            .byte           ATCE
+            .byte           ATCE+DPL3
             .byte           D32
             .byte           0x0
 aStack:                                     #0xd0
             .word           0x200           #aStackLen-1
             .word           0x9a80
             .byte           0x0
-            .byte           ATDW
+            .byte           ATDW+DPL3
             .byte           D32
             .byte           0x0
 bCode:                                      #0xd8
             .word           0x39            #aCodeLen-1
             .word           0x20e0
             .byte           0x0
-            .byte           ATCE
+            .byte           ATCE+DPL3
             .byte           D32
             .byte           0x0
 bStack:                                     #0xe0
             .word           0x200           #aStackLen-1
             .word           0x9b80
             .byte           0x0
-            .byte           ATDW
+            .byte           ATDW+DPL3
             .byte           D32
             .byte           0x0
 .org 512

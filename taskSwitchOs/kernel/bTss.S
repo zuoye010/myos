@@ -19,12 +19,12 @@
         .long       0x0         #ebp            #60
         .long       0x0         #esi            #64
         .long       0x0         #edi            #68
-        .long       0x28        #es             #72
-        .long       0xd8        #cs             #76
-        .long       0xe0        #ss             #80
-        .long       0x10        #ds             #84
-        .long       0x08        #fs             #88
-        .long       0x08        #gs             #92
+        .long       (0x28+RPL3)        #es             #72
+        .long       (0xd8+RPL3)        #cs             #76
+        .long       (0xe0+RPL3)        #ss             #80
+        .long       (0x10+RPL3)        #ds             #84
+        .long       (0x08+RPL3)        #fs             #88
+        .long       (0x08+RPL3)        #gs             #92
         .long       0x00        #ldt            #96
         .word       0x0         #trace          #100
         .word       104         #ioMap          #102
